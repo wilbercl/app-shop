@@ -13,7 +13,6 @@
 
 Route::get('/', 'TestController@welcome');
 
-Route::get('/prueba', 'TestController@prueba');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
