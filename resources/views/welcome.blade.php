@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Welcome to App Shop')
+
 @section('body-class', 'landing-page')
 
 @section('content')
@@ -7,8 +9,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <h1 class="title">Your Story Starts With Us.</h1>
-        <h4>Every landing page needs a small description after the big bold title, that&apos;s why we added this text here. Add here all the information that can make you or your product create the first impression.</h4>
+        <h1 class="title">Welcome to App Shop.</h1>
+        <h4>Place orders online and we will contact you to make the delivery.</h4>
         <br>
         <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="btn btn-danger btn-raised btn-lg">
           <i class="fa fa-play"></i> Watch video
@@ -23,8 +25,8 @@
     <div class="section text-center">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="title">Let&apos;s talk product</h2>
-          <h5 class="description">This is the paragraph where you can write more details about your product. Keep you user engaged by providing meaningful information. Remember that by this time, the user is curious, otherwise he wouldn&apos;t scroll to get here. Add a button if you want the user to see more.</h5>
+          <h2 class="title">Why App Shop?</h2>
+          <h5 class="description">You can check our complete list of products, compare prices and place your orders when you are safe.</h5>
         </div>
       </div>
       <div class="features">
@@ -34,8 +36,8 @@
               <div class="icon icon-info">
                 <i class="material-icons">chat</i>
               </div>
-              <h4 class="info-title">Free Chat</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+              <h4 class="info-title">Questions</h4>
+              <p>We quickly answer any questions you have via chat. You are not alone, we are always attentive to your concerns.</p>
             </div>
           </div>
           <div class="col-md-4">
@@ -43,8 +45,8 @@
               <div class="icon icon-success">
                 <i class="material-icons">verified_user</i>
               </div>
-              <h4 class="info-title">Verified Users</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+              <h4 class="info-title">Secure Payment</h4>
+              <p>Every order you make will be made through a call. If you do not trust online payments you can pay on delivery the associated value.</p>
             </div>
           </div>
           <div class="col-md-4">
@@ -52,7 +54,7 @@
               <div class="icon icon-danger">
                 <i class="material-icons">fingerprint</i>
               </div>
-              <h4 class="info-title">Fingerprint</h4>
+              <h4 class="info-title">Private Information</h4>
               <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
             </div>
           </div>
@@ -68,11 +70,11 @@
             <div class="team-player">
               <div class="card card-plain">
                 <div class="col-md-6 ml-auto mr-auto">
-                  <img src="{{asset('img/faces/avatar.jpg')}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  <img src="{{$product->images->first()->image}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
                 </div>
                 <h4 class="card-title"> {{ $product->name }}
                   <br>
-                  <small class="card-description text-muted">Model</small>
+                  <small class="card-description text-muted">{{$product->category->name}}</small>
                 </h4>
                 <div class="card-body">
                   <p class="card-description"> {{ $product->description }} </p>
