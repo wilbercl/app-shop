@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class TestController extends Controller
 {
     public function welcome()
     {
-    	return view('welcome');
+    	$products = Product::all();
+    	return view('welcome')->with(compact('products'));
     }
-    public function prueba()
-    {
-    	return "Hola soy la vista prueba";
-    }
+    
 }
