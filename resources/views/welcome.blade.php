@@ -22,6 +22,7 @@
 
 <div class="main main-raised">
   <div class="container">
+
     <div class="section text-center">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
@@ -55,12 +56,13 @@
                 <i class="material-icons">fingerprint</i>
               </div>
               <h4 class="info-title">Private Information</h4>
-              <p>Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough.</p>
+              <p>The orders you make will only be known through your user panel. No one else has access to information.</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
     <div class="section text-center">
       <h2 class="title">Available Products</h2>
       <div class="team">
@@ -69,12 +71,12 @@
           <div class="col-md-4">
             <div class="team-player">
               <div class="card card-plain">
-                <div class="col-md-6 ml-auto mr-auto">
-                  <img src="{{$product->images->first()->image}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                </div>
+                <!-- <div class="col-md-6 ml-auto mr-auto">
+                  <img src="{{$product->images ? $product->images->first()->image : asset('img/profile_city.jpg')}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                </div> -->
                 <h4 class="card-title"> {{ $product->name }}
                   <br>
-                  <small class="card-description text-muted">{{$product->category->name}}</small>
+                  <small class="card-description text-muted">{{$product->category ? $product->category->name : 'General'}}</small>
                 </h4>
                 <div class="card-body">
                   <p class="card-description"> {{ $product->description }} </p>
