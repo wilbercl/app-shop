@@ -13,6 +13,16 @@
     
     <div class="section">
       <h2 class="title text-center">Register Product</h2>
+
+      @if($errors->any())
+        <div class="alert alert-danger">
+          <url>
+              @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+              @endforeach
+            </url>
+        </div>
+      @endif
       
       <form method="POST" action="{{url('/admin/products')}}">
         @csrf
@@ -41,6 +51,7 @@
           <textarea class="form-control" placeholder="Description long" rows="5" name="long_description" rows="5"></textarea>
 
           <button class="btn btn-primary">Register</button>
+          <a href="{{url('/')}}" class="btn btn-default"> Cancel</a>
 
       </form>
 
@@ -49,39 +60,5 @@
   </div>
 </div>
 
-<footer class="footer footer-default">
-  <div class="container">
-    <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://www.creative-tim.com">
-            Creative Tim
-          </a>
-        </li>
-        <li>
-          <a href="https://creative-tim.com/presentation">
-            About Us
-          </a>
-        </li>
-        <li>
-          <a href="http://blog.creative-tim.com">
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="https://www.creative-tim.com/license">
-            Licenses
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright float-right">
-      &copy;
-      <script>
-        document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-    </div>
-  </div>
-</footer>
+@include('includes.footer')
 @endsection

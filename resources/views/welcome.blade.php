@@ -71,9 +71,9 @@
           <div class="col-md-4">
             <div class="team-player">
               <div class="card card-plain">
-                <!-- <div class="col-md-6 ml-auto mr-auto">
+                <div class="col-md-6 ml-auto mr-auto">
                   <img src="{{$product->images ? $product->images->first()->image : asset('img/profile_city.jpg')}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
-                </div> -->
+                </div>
                 <h4 class="card-title"> {{ $product->name }}
                   <br>
                   <small class="card-description text-muted">{{$product->category ? $product->category->name : 'General'}}</small>
@@ -131,39 +131,5 @@
   </div>
 </div>
 
-<footer class="footer footer-default">
-  <div class="container">
-    <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://www.creative-tim.com">
-            Creative Tim
-          </a>
-        </li>
-        <li>
-          <a href="https://creative-tim.com/presentation">
-            About Us
-          </a>
-        </li>
-        <li>
-          <a href="http://blog.creative-tim.com">
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="https://www.creative-tim.com/license">
-            Licenses
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright float-right">
-      &copy;
-      <script>
-        document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-    </div>
-  </div>
-</footer>
+@include('includes.footer')
 @endsection

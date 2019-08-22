@@ -22,9 +22,9 @@
             <thead>
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="col-md-2">Name</th>
-                    <th class="col-md-4">Description</th>
-                    <th>Category</th>
+                    <th class="col-md-2 text-center">Name</th>
+                    <th class="col-md-4 text-center">Description</th>
+                    <th class="text-center">Category</th>
                     <th class="text-right">Price</th>
                     <th class="text-right">Actions</th>
                 </tr>
@@ -45,11 +45,14 @@
                         <!-- {{csrf_field()}} 
                         <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-                          <a href="" rel="tooltip" title="View Product" class="btn btn-info btn-simple btn-xs">
+                          <a href="#" rel="tooltip" title="View Product" class="btn btn-info btn-simple btn-xs">
                             <i class="fa fa-info"></i>
                           </a>
                           <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-simple btn-xs">
                               <i class="fa fa-edit"></i>
+                          </a>
+                          <a href="#" rel="tooltip" title="Product Images" class="btn btn-warning btn-simple btn-xs">
+                            <i class="fa fa-image"></i>
                           </a>
                           <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
                             <i class="fa fa-times"></i>
@@ -70,39 +73,5 @@
   </div>
 </div>
 
-<footer class="footer footer-default">
-  <div class="container">
-    <nav class="float-left">
-      <ul>
-        <li>
-          <a href="https://www.creative-tim.com">
-            Creative Tim
-          </a>
-        </li>
-        <li>
-          <a href="https://creative-tim.com/presentation">
-            About Us
-          </a>
-        </li>
-        <li>
-          <a href="http://blog.creative-tim.com">
-            Blog
-          </a>
-        </li>
-        <li>
-          <a href="https://www.creative-tim.com/license">
-            Licenses
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div class="copyright float-right">
-      &copy;
-      <script>
-        document.write(new Date().getFullYear())
-      </script>, made with <i class="material-icons">favorite</i> by
-      <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
-    </div>
-  </div>
-</footer>
+@include('includes.footer')
 @endsection
