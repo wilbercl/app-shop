@@ -16,16 +16,14 @@ Route::get('/', 'TestController@welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products/{id}', 'ProductController@show');//mostrar producto
 
-Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/products', 'ProductController@index');//listado
-
 	Route::get('/products/create', 'ProductController@create');//formulario create
 	Route::post('/products', 'ProductController@store');//registrar 
-
 	Route::get('/products/{id}/edit', 'ProductController@edit');//formulario editar
 	Route::post('/products/{id}/edit', 'ProductController@update');//editar formulario
-
 	Route::post('/products/{id}/delete', 'ProductController@delete');//eliminar 
 
 	Route::get('/products/{id}/images', 'ImageController@index'); //listado de imagenes del producto

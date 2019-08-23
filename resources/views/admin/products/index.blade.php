@@ -45,7 +45,7 @@
                         <!-- {{csrf_field()}} 
                         <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-                          <a href="#" rel="tooltip" title="View Product" class="btn btn-info btn-simple btn-xs">
+                          <a href="{{url('products/' . $product->id)}}"  rel="tooltip" title="View Product" class="btn btn-info btn-simple btn-xs">
                             <i class="fa fa-info"></i>
                           </a>
                           <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-simple btn-xs">
