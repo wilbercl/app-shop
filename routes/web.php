@@ -29,4 +29,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 	Route::post('/products/{id}/delete', 'ProductController@delete');//eliminar 
 
 	Route::get('/products/{id}/images', 'ImageController@index'); //listado de imagenes del producto
+	Route::post('/products/{id}/images', 'ImageController@store');//registrar la nueva imagen
+	Route::delete('/products/{id}/images', 'ImageController@delete');//registrar la nueva imagen
+	Route::get('/products/{id}/images/select/{image}', 'ImageController@select'); //listado de imagenes del producto
 });

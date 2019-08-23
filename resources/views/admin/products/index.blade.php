@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'App Shop')
+@section('title', 'All Products')
 
 @section('body-class', 'profile-page')
 
@@ -17,7 +17,7 @@
       <div class="team">
         <div class="row">
 
-          <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-round">New Product</a>
+          <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-round ">New Product</a>
           <table class="table">
             <thead>
                 <tr>
@@ -51,7 +51,7 @@
                           <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-simple btn-xs">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <a href="#" rel="tooltip" title="Product Images" class="btn btn-warning btn-simple btn-xs">
+                          <a href="{{url('admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Product Images" class="btn btn-warning btn-simple btn-xs">
                             <i class="fa fa-image"></i>
                           </a>
                           <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">

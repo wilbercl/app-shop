@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'App Shop')
+@section('title', 'Register Product')
 
 @section('body-class', 'profile-page')
 
