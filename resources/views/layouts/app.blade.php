@@ -17,6 +17,7 @@
   <link href="{{asset('css/material-kit.css?v=2.0.5')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
+  @yield('styles')
 </head>
 
 <body class="@yield('body-class')">
@@ -54,20 +55,25 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if (auth()->user()->admin) <!-- si el usuario es administrador vera esta opcion sino no la vera. -->
-                              <a class="dropdown-item" href="{{url('admin/products')}}">Manage Products
-                              </a>
-                            @endif
 
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
+                          
+                            <a href="{{url('home')}}" class="dropdown-item">Dashboard</a>
+                          
+
+                          @if (auth()->user()->admin) <!-- si el usuario es administrador vera esta opcion sino no la vera. -->
+                            <a class="dropdown-item" href="{{url('admin/products')}}">Manage Products
                             </a>
+                          @endif
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
+                          <a class="dropdown-item" href="{{ route('logout') }}"
+                             onclick="event.preventDefault();
+                                           document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                          </a>
+
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                              @csrf
+                          </form>
                         </div>
                     </li>
                 @endguest

@@ -16,8 +16,8 @@ class CreateCarlsTable extends Migration
         Schema::create('carls', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->date('order_date');
-            $table->date('arrived_date');
+            $table->date('order_date')->nullable();
+            $table->date('arrived_date')->nullable();
             $table->string('status'); //Active, Pending, Approved, Cancelled, Finished
 
             //user_id FK

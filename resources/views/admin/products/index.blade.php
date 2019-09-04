@@ -17,7 +17,10 @@
       <div class="team">
         <div class="row">
 
-          <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-round ">New Product</a>
+          <div class="col">
+            <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-round">New Product</a>         
+          </div>
+
           <table class="table">
             <thead>
                 <tr>
@@ -45,16 +48,16 @@
                         <!-- {{csrf_field()}} 
                         <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-                          <a href="{{url('products/' . $product->id)}}"  rel="tooltip" title="View Product" class="btn btn-info btn-simple btn-xs">
+                          <a href="{{url('products/' . $product->id)}}"  rel="tooltip" title="View Product" class="btn btn-info btn-link">
                             <i class="fa fa-info"></i>
                           </a>
-                          <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-simple btn-xs">
+                          <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-link">
                               <i class="fa fa-edit"></i>
                           </a>
-                          <a href="{{url('admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Product Images" class="btn btn-warning btn-simple btn-xs">
+                          <a href="{{url('admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Product Images" class="btn btn-warning btn-link">
                             <i class="fa fa-image"></i>
                           </a>
-                          <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                          <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link">
                             <i class="fa fa-times"></i>
                           </button>
                         </form>
@@ -64,7 +67,8 @@
                 @endforeach
             </tbody>
         </table>
-          {{ $products->links() }}
+        
+        {{ $products->links() }}     
 
         </div>
       </div>

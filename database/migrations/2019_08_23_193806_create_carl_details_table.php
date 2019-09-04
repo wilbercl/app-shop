@@ -17,7 +17,7 @@ class CreateCarlDetailsTable extends Migration
             $table->bigIncrements('id');
 
             $table->integer('quantity');
-            $table->integer('discount'); //%int
+            $table->integer('discount')->default(0); //%int
 
             //FK carl_id 
             $table->unsignedBigInteger('carl_id');

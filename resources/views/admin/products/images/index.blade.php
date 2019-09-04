@@ -4,6 +4,14 @@
 
 @section('body-class', 'profile-page')
 
+@section('styles')
+  <style> 
+    .row .col-md-4{
+      margin-bottom: 4em;
+    }
+  </style>
+@endsection
+
 @section('content')
 <div class="page-header header-filter" data-parallax="true" style="background-image: url('{{asset('img/profile_city.jpg')}}')">
   
@@ -14,7 +22,6 @@
   
     <div class="section text-center">
       <h2 class="title">"{{ $product->name }}" Product Images</h2>       
-
       
       <form method="POST" action="" enctype="multipart/form-data">
       @csrf
