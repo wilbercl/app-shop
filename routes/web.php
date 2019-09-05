@@ -35,4 +35,11 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group
 	Route::post('/products/{id}/images', 'ImageController@store');//registrar la nueva imagen
 	Route::delete('/products/{id}/images', 'ImageController@delete');//registrar la nueva imagen
 	Route::get('/products/{id}/images/select/{image}', 'ImageController@select'); //listado de imagenes del producto
+
+	Route::get('/categories', 'CategoryController@index');//listado
+	Route::get('/categories/create', 'CategoryController@create');//formulario create
+	Route::post('/categories', 'CategoryController@store');//registrar 
+	Route::get('/categories/{category}/edit', 'CategoryController@edit');//formulario editar
+	Route::post('/categories/{category}/edit', 'CategoryController@update');//editar formulario
+	Route::post('/categories/{category}/delete', 'CategoryController@delete');//eliminar 
 });

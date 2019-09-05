@@ -97,7 +97,7 @@
                 <h4 class="card-title"> 
                   <a href="{{url('/products/'.$product->id)}}">{{ $product->name }}</a>
                   <br>
-                  <small class="card-description text-muted">{{$product->category ? $product->category->name : 'General'}}</small>
+                  <small class="card-description text-muted">{{$product->category_name}}</small>
                 </h4>
                 <div class="card-body">
                   <p class="card-description"> {{ $product->description }} </p>

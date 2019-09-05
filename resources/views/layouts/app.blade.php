@@ -65,6 +65,11 @@
                             </a>
                           @endif
 
+                          @if (auth()->user()->admin) <!-- si el usuario es administrador vera esta opcion sino no la vera. -->
+                            <a class="dropdown-item" href="{{url('admin/categories')}}">Manage Categories
+                            </a>
+                          @endif
+
                           <a class="dropdown-item" href="{{ route('logout') }}"
                              onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">

@@ -39,6 +39,7 @@
                 {{ session('notification') }}
               </div>
             @endif
+            
           </div>
         </div>
         

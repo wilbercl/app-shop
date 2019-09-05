@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'All Products')
+@section('title', 'All Categories')
 
 @section('body-class', 'profile-page')
 
@@ -13,12 +13,19 @@
   <div class="container">
   
     <div class="section text-center">
-      <h2 class="title">All Products</h2>
+      <h2 class="title">All Categories</h2>
+
+        @if (session('notification'))
+          <div class="alert alert-success" role="alert">
+            {{ session('notification') }}
+          </div>
+        @endif
+      
       <div class="team">
         <div class="row">
 
           <div class="col">
-            <a href="{{url('/admin/products/create')}}" class="btn btn-primary btn-round">New Product</a>         
+            <a href="{{url('/admin/categories/create')}}" class="btn btn-primary btn-round">New Category</a>         
           </div>
 
           <table class="table">
@@ -27,35 +34,28 @@
                     <th class="text-center">#</th>
                     <th class="col-md-2 text-center">Name</th>
                     <th class="col-md-4 text-center">Description</th>
-                    <th class="text-center">Category</th>
-                    <th class="text-right">Price</th>
-                    <th class="text-right">Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-              @foreach( $products as $product)
+              @foreach( $categories as $key => $category)
                 <tr>
-                    <td class="text-center">{{$product->id}}</td>
-                    <td>{{$product->name}}</td>
-                    <td>{{$product->description}}</td>
-                    <td>{{$product->category_name}}</td>
-                    <td class="text-right">&euro; {{$product->price}}</td>
-                    <td class="td-actions text-right">
-                        <form method="POST" action="{{url('admin/products/'.$product->id.'/delete')}}">
+                    <td class="text-center">{{$key + 1}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>{{$category->description}}</td>
+                    <td class="td-actions">
+                        <form method="POST" action="{{url('admin/categories/'.$category->id.'/delete')}}">
 
                         <!-- Las tres cosas significan lo mismo, se usa cuando el pedido es un metodo POST -->
                         @csrf
                         <!-- {{csrf_field()}} 
                         <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-                          <a href="{{url('products/' . $product->id)}}"  rel="tooltip" title="View Product" class="btn btn-info btn-link" target="_blank">
+                          <!-- <a href="{{url('admin/categories/' . $category->id)}}"  rel="tooltip" title="View Category" class="btn btn-info btn-link">
                             <i class="fa fa-info"></i>
-                          </a>
-                          <a href="{{url('admin/products/'.$product->id.'/edit')}}" rel="tooltip" title="Edit Product" class="btn btn-success btn-link">
+                          </a> -->
+                          <a href="{{url('admin/categories/'.$category->id.'/edit')}}" rel="tooltip" title="Edit Category" class="btn btn-success btn-link">
                               <i class="fa fa-edit"></i>
-                          </a>
-                          <a href="{{url('admin/products/'.$product->id.'/images')}}" rel="tooltip" title="Product Images" class="btn btn-warning btn-link">
-                            <i class="fa fa-image"></i>
                           </a>
                           <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link">
                             <i class="fa fa-times"></i>
@@ -68,7 +68,7 @@
             </tbody>
         </table>
         
-        {{ $products->links() }}     
+        {{ $categories->links() }}     
 
         </div>
       </div>
