@@ -21,7 +21,7 @@ Route::get('/products/{id}', 'ProductController@show');//mostrar producto
 Route::post('/cart', 'CartDetailController@store');//añadir un carrito de compra
 Route::delete('/cart', 'CartDetailController@delete');//eliminar un detalle(producto seleccionado) de un carrito de compra
 
-Route::post('/order', 'OrderController@store');//añadir una orden de compra
+Route::post('/order', 'CartController@update');//añadir una orden de compra
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->namespace('Admin')->group(function () {
     Route::get('/products', 'ProductController@index');//listado

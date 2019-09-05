@@ -31,7 +31,7 @@
             <li class="nav-item">
                 <a href="#tasks" role="tab" data-toggle="tab" class="nav-link">
                     <i class="material-icons">list</i>
-                    Place Orders
+                    Orders Placed
                 </a>
             </li>
         </ul>
