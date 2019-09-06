@@ -51,9 +51,9 @@
                         <!-- {{csrf_field()}} 
                         <input type="hidden" name="_token" value="{{csrf_token()}}"> -->
 
-                          <!-- <a href="{{url('admin/categories/' . $category->id)}}"  rel="tooltip" title="View Category" class="btn btn-info btn-link">
+                          <a href="{{url('categories/' . $category->id)}}"  rel="tooltip" title="View Category" class="btn btn-info btn-link" target="_blank">
                             <i class="fa fa-info"></i>
-                          </a> -->
+                          </a>
                           <a href="{{url('admin/categories/'.$category->id.'/edit')}}" rel="tooltip" title="Edit Category" class="btn btn-success btn-link">
                               <i class="fa fa-edit"></i>
                           </a>

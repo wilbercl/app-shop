@@ -9,17 +9,17 @@
     .team .row .col-md-4{
       margin-bottom: 5em;
     }
-    /*.row {
+    .team .row {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display:         flex;
     flex-wrap: wrap;
   }
-  .row > [class*='col-'] {
+   .team .row > [class*='col-'] {
     display: flex;
     flex-direction: column;
-  }*/
+  }
   </style>
 @endsection
 
@@ -46,7 +46,7 @@
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <h2 class="title">Why App Shop?</h2>
-          <h5 class="description">You can check our complete list of products, compare prices and place your orders when you are safe.</h5>
+          <h5 class="description">You can check our complete list of categories, compare prices and place your orders when you are safe.</h5>
         </div>
       </div>
       <div class="features">
@@ -83,24 +83,31 @@
     </div>
     
     <div class="section text-center">
-      <h2 class="title">Available Products</h2>
+      <h2 class="title">Available Categories</h2>
+
+      <form method="GET" action="{{url('/search')}}" class="form-inline">
+        <input type="text" placeholder="What category are you looking for?" class="form-control" name="query">
+        <button type="submit" class="btn btn-primary btn-fab btn-fab-mini btn-round">
+          <i class="material-icons">search</i>
+        </button>
+      </form>
 
       <div class="team">
         <div class="row">
-        @foreach ($products as $product)
+        @foreach ($categories as $category)
           <div class="col-md-4">
             <div class="team-player">
               <div class="card card-plain">
                 <div class="col-md-6 ml-auto mr-auto">
-                  <img src="{{$product->featured_image_url}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+                  <img src="{{$category->featured_image_url}}" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
                 </div>
                 <h4 class="card-title"> 
-                  <a href="{{url('/products/'.$product->id)}}">{{ $product->name }}</a>
-                  <br>
-                  <small class="card-description text-muted">{{$product->category_name}}</small>
+                  <a href="{{url('/categories/'.$category->id)}}">{{ $category->name }}</a>
+                  <!-- <br>
+                  <small class="card-description text-muted">{{$category->category_name}}</small> -->
                 </h4>
                 <div class="card-body">
-                  <p class="card-description"> {{ $product->description }} </p>
+                  <p class="card-description"> {{ $category->description }} </p>
                 </div>
                 <!-- <div class="card-footer justify-content-center">
                   <a href="#pablo" class="btn btn-link btn-just-icon"><i class="fa fa-twitter"></i></a>
@@ -112,20 +119,14 @@
           </div>
           @endforeach
         </div>
-
-          
-      </div>
-
-      <div class="text-center">
-          {{ $products->links() }}
-        </div>    
+      </div> 
 
     </div>
     <div class="section section-contacts">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
           <h2 class="text-center title">Work with us</h2>
-          <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
+          <h4 class="text-center description">Divide details about your category or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
           <form class="contact-form">
             <div class="row">
               <div class="col-md-6">
