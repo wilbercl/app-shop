@@ -34,6 +34,7 @@
                     <th class="text-center">#</th>
                     <th class="col-md-2 text-center">Name</th>
                     <th class="col-md-4 text-center">Description</th>
+                    <th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,6 +44,9 @@
                     <td class="text-center">{{$key + 1}}</td>
                     <td>{{$category->name}}</td>
                     <td>{{$category->description}}</td>
+                    <td>
+                      <img src="{{$category->featured_image_url}}" height="50">
+                    </td>
                     <td class="td-actions">
                         <form method="POST" action="{{url('admin/categories/'.$category->id.'/delete')}}">
 

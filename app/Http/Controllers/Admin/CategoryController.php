@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Category;
+use File;
 
 class CategoryController extends Controller
 {
@@ -26,8 +27,21 @@ class CategoryController extends Controller
 
     	$this->validate($request, Category::$rules, Category::$messages);
 
-        //otra manera de crear una categoria, pero esta es de manera "mass assignment". 
-    	Category::create($request->all());
+        //otra manera de crear una categoria, pero esta es de manera "mass assignment", pero solo con los campos 'name' y 'description'. 
+    	$category = Category::create($request->only('name', 'description'));
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $path = public_path() . '/images/categories'; //ruta donde estara la nueva imagen almacenada
+            $filename = uniqid() . '-' . $file->getClientOriginalName(); //nombre que se le dara a la imagen seleccionada (id unico + nombre del archivo)
+            $move = $file->move($path, $filename); //ordenar al archivo que se guarde en la ruta $path con el nombre $filename
+
+            //actualizamos la categoria con la imagen
+            if($move){
+                $category->image=$filename;          
+                $category->save();
+            }
+        }
 
     	$notification = 'The category was created correctly.';
 
@@ -43,7 +57,25 @@ class CategoryController extends Controller
     {
         $this->validate($request, Category::$rules, Category::$messages);
 
-        $category->update($request->all());
+        $category->update($request->only('name', 'description'));
+
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $path = public_path() . '/images/categories'; //ruta donde estara la nueva imagen almacenada
+            $filename = uniqid() . '-' . $file->getClientOriginalName(); //nombre que se le dara a la imagen seleccionada (id unico + nombre del archivo)
+            $move = $file->move($path, $filename); //ordenar al archivo que se guarde en la ruta $path con el nombre $filename
+
+            //actualizamos la categoria con la imagen
+            if($move){
+                $previousPath = $path . '/' . $category->image;
+                
+                $category->image=$filename;          
+                $save = $category->save();
+
+                if($save)
+                    File::delete($previousPath);
+            }
+        }
 
     	$notification = 'The category was updated correctly.';
 

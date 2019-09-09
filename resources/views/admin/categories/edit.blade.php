@@ -30,7 +30,7 @@
         </div>
       @endif
       
-      <form method="POST" action="{{url('/admin/categories/'.$category->id.'/edit')}}">
+      <form method="POST" action="{{url('/admin/categories/'.$category->id.'/edit')}}" enctype="multipart/form-data">
         @csrf
 
           <div class="row">
@@ -39,7 +39,18 @@
                 <label class="control-label">Name</label>
                 <input type="text" class="form-control" name="name" value="{{$category->name}}">
               </div>
-            </div>            
+            </div>    
+
+            <div class="col-sm-6">              
+              <label class="control-label">Image Category</label>
+              <input type="file" name="image" value="{{$category->image}}">  
+              @if ($category->image)  
+              <p class="help-block"> 
+                Upload only if you want to replace the 
+                <a href="{{asset('/images/categories/'. $category->image)}}" target="_blank">current image </a>     
+              </p>
+              @endif    
+            </div>           
           </div>
           
           <textarea class="form-control" placeholder="Description" rows="5" name="description" rows="5"> 

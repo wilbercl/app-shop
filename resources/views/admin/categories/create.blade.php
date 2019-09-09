@@ -24,16 +24,21 @@
         </div>
       @endif
       
-      <form method="POST" action="{{url('/admin/categories')}}">
+      <form method="POST" action="{{url('/admin/categories')}}" enctype="multipart/form-data">
         @csrf
 
           <div class="row">
             <div class="col-sm-6">
-              <div class="form-group label-floating">
-                <label class="control-label">Name</label>
+              <div class="form-group">
+                <label class="bmd-label-floating">Name</label>
                 <input type="text" class="form-control" name="name">
+              </div>         
             </div>
-          </div>
+
+            <div class="col-sm-6">
+              <label class="control-label">Image Category</label>
+              <input type="file" name="image">
+            </div>
           </div>
           
            <textarea class="form-control" placeholder="Description" rows="5" name="description" rows="5"></textarea>       
