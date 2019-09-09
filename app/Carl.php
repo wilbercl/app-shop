@@ -10,4 +10,14 @@ class Carl extends Model
     {
     	return $this->hasMany(CarlDetail::class);
     }
+
+    public function GetTotalAttribute()
+    {
+    	$total = 0;
+    	foreach ($this->details as $detail) {
+    		$total+= $detail->quantity * $detail->product->price;
+    	}
+
+    	return $total;
+    }
 }

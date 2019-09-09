@@ -84,6 +84,8 @@
             </tbody>
         </table>
 
+        <p><strong>Amount to pay: </strong>{{auth()->user()->cart->total}}</p>
+
         <div class="text-center">
             <form method="POST" action="{{url('/order')}}">
                 @csrf

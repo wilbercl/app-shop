@@ -48,14 +48,12 @@
             @endif
 
               <div class="description text-center">
-                <p>{{$products->count()}} results found for the query {{$query}}</p>
+                <p>{{$products->count()}} results found for the query {{$query}}</p>            
               </div>  
             </div>
 
-
           </div>
 
-          
           <div class="team text-center">
             <div class="row">
             @foreach ($products as $product)
@@ -87,45 +85,13 @@
 
           <div class="text-center">
             {{$products->links()}}
-          </div>
-        
-            
+          </div>           
 
-        </div>
-          
-
-      
+        </div>   
         
       </div>
     </div>
   </div>
-
-<!-- Modal Core -->
-<div class="modal fade" id="modalAddToCart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Select the amount you want to add</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        
-      </div>
-
-      <form method="POST" action="{{url('cart')}}">
-      @csrf
-        <input type="hidden" name="product_id" value="{{$product->id}}">
-        <div class="modal-body">
-          <input type="number" name="quantity" value="1" class="form-control">
-        </div>
-
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-info btn-simple">Save</button>
-          <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>    
-        </div>
-      </form>
-           
-    </div>
-  </div>
-</div>
 
 @include('includes.footer')
 @endsection

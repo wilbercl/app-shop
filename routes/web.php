@@ -15,12 +15,13 @@ Route::get('/', 'TestController@welcome');
 
 Auth::routes();
 
+Route::get('/search', 'SearchController@show');//hacer una busqueda
+Route::get('/products/json', 'SearchController@data');//devolver arreglo con los nombres de los productos
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/products/{id}', 'ProductController@show');//mostrar producto
 
 Route::get('/categories/{category}', 'CategoryController@show');//mostrar categoria
-
-Route::get('/search', 'SearchController@show');//hacer una busqueda
 
 Route::post('/cart', 'CartDetailController@store');//añadir un carrito de compra
 Route::delete('/cart', 'CartDetailController@delete');//eliminar un detalle(producto seleccionado) de un carrito de compra
