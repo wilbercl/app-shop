@@ -165,34 +165,39 @@
     <div class="section section-contacts">
       <div class="row">
         <div class="col-md-8 ml-auto mr-auto">
-          <h2 class="text-center title">Work with us</h2>
-          <h4 class="text-center description">Divide details about your category or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-          <form class="contact-form">
+          <h2 class="text-center title">You have not yet registered?</h2>
+          <h4 class="text-center description">Register by entering your basic data and you can place orders through our shopping cart.</h4>
+          <form class="contact-form" method="GET" action="{{url('register')}}">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Your Name</label>
-                  <input type="email" class="form-control">
+                  <input type="text" class="form-control" name="name">
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label class="bmd-label-floating">Your Email</label>
-                  <input type="email" class="form-control">
+                  <input type="email" class="form-control" name="email">
                 </div>
               </div>
             </div>
-            <div class="form-group">
-              <label for="exampleMessage" class="bmd-label-floating">Your Message</label>
-              <textarea type="email" class="form-control" rows="4" id="exampleMessage"></textarea>
-            </div>
+            
             <div class="row">
               <div class="col-md-4 ml-auto mr-auto text-center">
                 <button class="btn btn-primary btn-raised">
-                  Send Message
+                  Start Register
                 </button>
               </div>
             </div>
+
+            <!-- <div class="row">
+              <div class="col-md-4 ml-auto mr-auto text-center">
+                <a href="{{url('register')}}" class="btn btn-primary btn-round">Start Register</a>
+              </div>
+            </div> -->
+            
+
           </form>
         </div>
       </div>

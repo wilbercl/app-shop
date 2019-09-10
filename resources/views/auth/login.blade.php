@@ -9,6 +9,16 @@
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
           <div class="card card-login">
 
+            @if($errors->any())
+            <div class="alert alert-danger">
+              <url>
+                  @foreach ($errors->all() as $error)
+                    <li>{{$error}}</li>
+                  @endforeach
+                </url>
+            </div>
+            @endif
+
             <form class="form" method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -32,10 +42,10 @@
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text">
-                      <i class="material-icons">mail</i>
+                      <i class="material-icons">face</i>
                     </span>
                   </div>
-                  <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email...">
+                  <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus placeholder="Username...">
                 </div>
 
                 <div class="input-group">
@@ -48,16 +58,20 @@
                 </div>
 
                 <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>                       
-                        Remember Me
-                    </label>
+                  <label>
+                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>                       
+                    Remember Me
+                  </label>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</button>
                 </div>
               </div>
 
-              <div class="footer text-center">
+              <!-- <div class="footer text-center">
                 <button type="submit" class="btn btn-primary btn-link btn-wd btn-lg">Get Started</button>
-              </div>
+              </div> -->
 
               <!--<a class="btn btn-link" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
