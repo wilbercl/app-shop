@@ -60,9 +60,9 @@
                 <td>
                     <a href="{{url('/products/'. $detail->product->id)}}" target="_blank"> {{$detail->product->name}} </a>
                 </td>                    
-                <td>$ {{$detail->product->price}}</td>
+                <td>$ {{$detail->price}}</td>
                 <td>{{$detail->quantity}}</td>
-                <td>$ {{$detail->quantity * $detail->product->price}}</td>
+                <td>$ {{$detail->quantity * $detail->price}}</td>
                 <td class="td-actions">
                     <form method="POST" action="{{url('cart')}}">
                         @csrf

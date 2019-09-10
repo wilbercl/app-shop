@@ -13,6 +13,7 @@ class CartDetailController extends Controller
     	$cartDetail->carl_id = auth()->user()->cart->id;
     	$cartDetail->product_id = $request->product_id;
     	$cartDetail->quantity = $request->quantity;
+        $cartDetail->price = $request->price;
     	$cartDetail->save();
 
     	$notification = 'The product has been successfully loaded into your shopping cart.';

@@ -83,6 +83,7 @@
       <form method="POST" action="{{url('cart')}}">
       @csrf
         <input type="hidden" name="product_id" value="{{$product->id}}">
+        <input type="hidden" name="price" value="{{$product->price}}">
         <div class="modal-body">
           <input type="number" name="quantity" value="1" class="form-control">
         </div>
