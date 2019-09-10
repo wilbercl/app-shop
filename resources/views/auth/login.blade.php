@@ -57,10 +57,13 @@
                   <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password...">
                 </div>
 
-                <div class="checkbox">
-                  <label>
-                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>                       
-                    Remember Me
+                <div class="form-check">
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox" name="remember" id="remember" value={{ old('remember') ? "checked" : "" }}>
+                      Remember Me
+                      <span class="form-check-sign">
+                          <span class="check"></span>
+                      </span>
                   </label>
                 </div>
 
