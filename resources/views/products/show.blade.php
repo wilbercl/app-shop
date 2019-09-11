@@ -30,7 +30,7 @@
 
               <div class="name">
                 <h3 class="title">{{$product->name}}</h3>
-                <h6>{{$product->category->name}}</h6>
+                <h6>{{ $product->category ? $product->category->name : 'General'}}</h6>
               </div>
             </div>
 
