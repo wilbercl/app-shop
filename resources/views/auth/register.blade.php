@@ -58,7 +58,7 @@
                           <i class="material-icons">book</i>
                         </span>
                       </div>
-                      <input id="address" type="text" class="form-control" name="address" value="{{ old('address') }}" required placeholder="Address...">
+                      <input id="address" type="text" class="form-control" name="address" value="" required placeholder="Address...">
                     </div>
                   </div>
                 </div>
@@ -71,7 +71,7 @@
                           <i class="material-icons">mail</i>
                         </span>
                       </div>
-                      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $email) }}" autocomplete="email" autofocus placeholder="Email...">
+                      <input id="email" type="email" class="form-control" name="email" value="{{ old('email', $email) }}" placeholder="Email...">
                     </div>
                   </div>
 
@@ -95,7 +95,7 @@
                         <i class="material-icons">phone</i>
                       </span>
                     </div>
-                    <input id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}" required placeholder="Phone...">
+                    <input id="phone" type="phone" class="form-control" name="phone" value="" required placeholder="Phone...">
                   </div>
                 </div>
 
@@ -118,7 +118,7 @@
                       <i class="material-icons">face</i>
                     </span>
                   </div>
-                  <input type="text" class="form-control" name="username" value="{{ old('username') }}" required placeholder="Username...">
+                  <input type="text" class="form-control" name="username" value="" required placeholder="Username...">
                 </div>
               </div>
 
