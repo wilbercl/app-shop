@@ -39,7 +39,7 @@
               <div class="form-group label-floating">
                 <label class="control-label">Price</label>
                 <input type="number" step="0.01" class="form-control" name="price" value="{{$product->price}}">
-            </div>
+              </div>
             </div>
           </div>
           

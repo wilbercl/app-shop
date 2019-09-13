@@ -25,6 +25,7 @@ Route::get('/categories/{category}', 'CategoryController@show');//mostrar catego
 
 Route::post('/cart', 'CartDetailController@store');//añadir un carrito de compra
 Route::delete('/cart', 'CartDetailController@delete');//eliminar un detalle(producto seleccionado) de un carrito de compra
+Route::put('/cart', 'CartDetailController@edit');//editar la cantidad de productos que se desea añadir al carrito de compra.
 
 Route::post('/order', 'CartController@update');//añadir una orden de compra
 

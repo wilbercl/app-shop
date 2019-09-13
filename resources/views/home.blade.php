@@ -72,13 +72,17 @@
                         <a href="{{url('/products/' . $detail->product->id)}}" target="_blank" rel="tooltip" title="View Product" class="btn btn-info btn-link">
                             <i class="fa fa-info"></i>
                         </a>
-
+                        <button type="button" title="Edit Detail" class="btn btn-success btn-link" data-toggle="modal" data-target="#modalEditCartDetail" data-id="{{$detail->id}}" data-quantity="{{$detail->quantity}}">
+                            <i class="fa fa-edit"></i>
+                        </button>
                         <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link">
                             <i class="fa fa-times"></i>
                         </button>
                     </form>   
                 </td>
             </tr>
+
+            
             @endforeach
                 
             </tbody>
@@ -101,6 +105,47 @@
   </div>
 </div>
 
+<!-- Modal Core -->
+<div class="modal fade" id="modalEditCartDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Edit Detail: Quantity</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        
+      </div>
+
+      <form method="POST" action="{{url('cart')}}">
+        @csrf
+        {{method_field('PUT')}}
+        <div class="modal-body">
+            <input type="hidden" name="id" value="" id="id">
+            <input type="number" name="quantity" id="quantity" value="" class="form-control">
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-info btn-simple">Save</button>
+          <button type="button" class="btn btn-default btn-simple" data-dismiss="modal">Close</button>    
+        </div>
+      </form>
+           
+    </div>
+  </div>
+</div>
+
 @include('includes.footer')
 @endsection
 
+@section('scripts')
+  <script>
+  $(document).ready(function (e) {
+  $('#modalEditCartDetail').on('show.bs.modal', function(e) {    
+     var id = $(e.relatedTarget).data().id;
+      $(e.currentTarget).find('#id').val(id);
+
+      var quantity = $(e.relatedTarget).data().quantity;
+      $(e.currentTarget).find('#quantity').val(quantity);
+  });
+});
+  </script>
+@endsection
