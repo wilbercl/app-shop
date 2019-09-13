@@ -37,69 +37,92 @@
         </ul>
 
         <hr>
-        <p>Your shopping cart presents {{auth()->user()->cart->details->count()}} products</p>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th class="text-center">Image</th>
-                    <th class="text-center">Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>SubTotal</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-            
-            @foreach (auth()->user()->cart->details as $detail)
-            <tr>
-                <td class="text-center">
-                    <img src="{{$detail->product->featured_image_url}}" height="50">
-                </td>
-                <td>
-                    <a href="{{url('/products/'. $detail->product->id)}}" target="_blank"> {{$detail->product->name}} </a>
-                </td>                    
-                <td>$ {{$detail->price}}</td>
-                <td>{{$detail->quantity}}</td>
-                <td>$ {{$detail->quantity * $detail->price}}</td>
-                <td class="td-actions">
-                    <form method="POST" action="{{url('cart')}}">
+        <div class="tab-content tab-space">
+            <div class="tab-pane active" id="dashboard"> 
+                <p>Your shopping cart presents {{auth()->user()->cart->details->count()}} products</p>            
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Image</th>
+                            <th class="text-center">Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>SubTotal</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>            
+                        @foreach (auth()->user()->cart->details as $detail)
+                        <tr>
+                            <td class="text-center">
+                                <img src="{{$detail->product->featured_image_url}}" height="50">
+                            </td>
+                            <td>
+                                <a href="{{url('/products/'. $detail->product->id)}}" target="_blank"> {{$detail->product->name}} </a>
+                            </td>                    
+                            <td>$ {{$detail->price}}</td>
+                            <td class="text-center">{{$detail->quantity}}</td>
+                            <td>$ {{$detail->quantity * $detail->price}}</td>
+                            <td class="td-actions">
+                                <form method="POST" action="{{url('cart')}}">
+                                    @csrf
+                                    {{method_field('DELETE')}}
+
+                                    <input type="hidden" name="id" value="{{$detail->id}}">
+                                    <a href="{{url('/products/' . $detail->product->id)}}" target="_blank" rel="tooltip" title="View Product" class="btn btn-info btn-link">
+                                        <i class="fa fa-info"></i>
+                                    </a>
+                                    <button type="button" title="Edit Detail" class="btn btn-success btn-link" data-toggle="modal" data-target="#modalEditCartDetail" data-id="{{$detail->id}}" data-quantity="{{$detail->quantity}}">
+                                        <i class="fa fa-edit"></i>
+                                    </button>
+                                    <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                </form>   
+                            </td>
+                        </tr>            
+                        @endforeach                 
+                    </tbody>
+                </table>
+
+                <p><strong>Amount to pay: </strong>{{auth()->user()->cart->total}}</p>
+
+                <div class="text-center">
+                    <form method="POST" action="{{url('/order')}}">
                         @csrf
-                        {{method_field('DELETE')}}
-
-                        <input type="hidden" name="id" value="{{$detail->id}}">
-                        <a href="{{url('/products/' . $detail->product->id)}}" target="_blank" rel="tooltip" title="View Product" class="btn btn-info btn-link">
-                            <i class="fa fa-info"></i>
-                        </a>
-                        <button type="button" title="Edit Detail" class="btn btn-success btn-link" data-toggle="modal" data-target="#modalEditCartDetail" data-id="{{$detail->id}}" data-quantity="{{$detail->quantity}}">
-                            <i class="fa fa-edit"></i>
+                        <button class="btn btn-primary btn-round">
+                            <i class="material-icons">done</i> Review order
                         </button>
-                        <button type="submit" rel="tooltip" title="Remove" class="btn btn-danger btn-link">
-                            <i class="fa fa-times"></i>
-                        </button>
-                    </form>   
-                </td>
-            </tr>
-
+                    </form>           
+                </div>
+            </div>
             
-            @endforeach
-                
-            </tbody>
-        </table>
-
-        <p><strong>Amount to pay: </strong>{{auth()->user()->cart->total}}</p>
-
-        <div class="text-center">
-            <form method="POST" action="{{url('/order')}}">
-                @csrf
-                <button class="btn btn-primary btn-round">
-                  <i class="material-icons">done</i> Review order
-                </button>
-            </form>           
-        </div>
-        
-        
+            <div class="tab-pane" id="tasks">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Arrived Date</th>
+                            <th>Quantity</th>
+                            <th>SubTotal</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>            
+                        @foreach (auth()->user()->carts as $cart)
+                            <tr>
+                                <td>{{$cart->order_date}}</td>
+                                <td>{{$cart->arrived_date}}</td>                    
+                                <td>{{$cart->details()->count()}}</td>
+                                <td>{{$cart->total}}</td>
+                                <td>{{$cart->status}}</td>
+                            </tr>            
+                        @endforeach                 
+                    </tbody>
+                </table>
+            </div>
+        </div>        
     </div>
     
   </div>
